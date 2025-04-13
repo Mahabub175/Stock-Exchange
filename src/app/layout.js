@@ -26,13 +26,15 @@ const RootLayout = ({ children }) => {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <MainProvider>
-          <Layout className="h-screen">
+          <Layout className="h-screen relative">
             <Sidebar />
 
-            <Layout className="overflow-hidden">
-              <TopNavigation />
+            <Layout className="relative">
+              <div className="hidden lg:block sticky top-0 left-0 right-0 z-50 bg-white">
+                <TopNavigation />
+              </div>
 
-              <Content className="bg-white pt-[12%]">{children}</Content>
+              <Content className="bg-white lg:pt-[6%]">{children}</Content>
             </Layout>
           </Layout>
         </MainProvider>

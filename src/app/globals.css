@@ -19,8 +19,7 @@
 }
 
 .ant-menu {
-  background-color: #232733 !important;
-  height: 100vh !important;
+  height: 450vh !important;
 }
 
 .ant-menu-item {
@@ -42,4 +41,8 @@
   border-left: 2px solid rgb(90, 255, 186) !important;
   font-size: larger;
   font-size: 24px;
+}
+
+.my-container {
+  @apply container mx-auto px-5;
 }

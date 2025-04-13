@@ -106,7 +106,7 @@ const tabItems = [
 
 const TopNavigation = () => {
   return (
-    <Header className="!bg-white flex flex-col items-center gap-5">
+    <Header className="!bg-white flex flex-col items-center">
       <div className="w-full lg:w-1/3">
         <Input
           placeholder="Search"
@@ -116,7 +116,7 @@ const TopNavigation = () => {
         />
       </div>
 
-      <div className="w-full">
+      <div className="w-full !bg-white">
         <Tabs
           defaultActiveKey="1"
           items={tabItems}
