@@ -1,3 +1,4 @@
+import LiveCrypto from "@/Components/AllSection/LiveStock/LiveCrypto";
 import LiveStock from "@/Components/AllSection/LiveStock/LiveStock";
 import CopyTraderSlider from "@/Components/AllSection/Overview/CopyTraderSlider";
 import CryptoSlider from "@/Components/AllSection/Overview/CryptoSlider";
