@@ -6,7 +6,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Navigation, Pagination } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css";
-import { cryptoData } from "@/assets/data/homeData";
+import { cryptoData } from "@/assets/data/sliderData";
 
 const CryptoSlider = () => {
   const swiperRef = useRef();
