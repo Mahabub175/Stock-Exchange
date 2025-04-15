@@ -1,3 +1,4 @@
+import LiveStock from "@/Components/AllSection/LiveStock/LiveStock";
 import CopyTraderSlider from "@/Components/AllSection/Overview/CopyTraderSlider";
 import CryptoSlider from "@/Components/AllSection/Overview/CryptoSlider";
 import DailyMovers from "@/Components/AllSection/Overview/DailyMovers";
@@ -10,6 +11,7 @@ const page = () => {
   return (
     <>
       <CryptoSlider />
+      <LiveStock />
       <DailyMovers />
       <CopyTraderSlider />
       <TrendingAssets />
