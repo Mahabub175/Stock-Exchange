@@ -1,15 +1,43 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css";
 import { cryptoData } from "@/assets/data/homeData";
 
 const CryptoSlider = () => {
   const swiperRef = useRef();
+
+  const [mergedData, setMergedData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://trade.moonsgallerysystem.com/api/stock-quote/"
+        );
+        const apiData = await res.json();
+
+        const combined = cryptoData.map((item, index) => {
+          return {
+            ...item,
+            ...(apiData[index] || {}),
+          };
+        });
+
+        setMergedData(combined);
+      } catch (err) {
+        console.error("Error fetching stock data:", err);
+      }
+    };
+
+    const interval = setInterval(fetchData, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="my-container p-5 rounded-xl mt-1 lg:mt-10 relative -my-20">
       <p className="lg:text-xl font-medium">Investment Opportunities</p>
@@ -21,35 +49,53 @@ const CryptoSlider = () => {
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
           }}
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Navigation, Pagination]}
           spaceBetween={20}
           slidesPerView={2}
           breakpoints={{
             640: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
+            1100: { slidesPerView: 3 },
+            1600: { slidesPerView: 4 },
           }}
           navigation
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
           className="mySwiper"
           loop={true}
         >
-          {cryptoData?.map((item) => {
-            return (
-              <SwiperSlide key={item?.id}>
+          {mergedData?.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="relative w-[300px] h-[150px] lg:h-[200px] mx-auto rounded-xl overflow-hidden">
                 <Image
-                  src={item?.image}
-                  alt={"demo"}
+                  src={item.image}
+                  alt={item.symbol || "Crypto"}
                   width={240}
                   height={240}
-                  className="w-[300px] h-[150px] lg:h-[200px] rounded-xl mx-auto"
+                  className="w-[300px] h-full object-cover"
                 />
-              </SwiperSlide>
-            );
-          })}
+                <div className="absolute inset-0 bg-black opacity-20"></div>
+
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-white z-10">
+                  <Image
+                    src={item?.icon}
+                    alt={item.symbol}
+                    width={50}
+                    height={50}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div className="flex justify-between items-center w-full px-5 mt-10">
+                    <div>
+                      <p className="text-lg font-semibold">
+                        {item.company_name}
+                      </p>
+                      <p className="text-sm">{item.symbol}</p>
+                    </div>
+                    <p className="text-xl font-medium">
+                      ${item?.current_price?.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
         <div className="flex items-center justify-center gap-5 mt-10">
           <button

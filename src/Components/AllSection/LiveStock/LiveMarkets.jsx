@@ -121,63 +121,63 @@ const LiveMarkets = () => {
     .filter(Boolean);
 
   return (
-    <div className="my-container flex flex-col lg:flex-row gap-5 mt-20">
-      <div className="w-full">
-        <h2 className="text-2xl font-medium mb-6 text-center">
-          Live Stock Prices
-        </h2>
-        <ul className="space-y-4">
-          {stocks.map((data) => (
-            <li
-              key={data.symbol}
-              className="flex items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition hover:scale-105 duration-500"
-            >
-              <div className="flex items-center gap-3">
-                <img
-                  src={data.logo}
-                  alt={data.name}
-                  className="w-10 h-10 rounded-full object-contain"
-                />
-                <div>
-                  <div className="font-semibold">{data.name}</div>
-                  <div className="text-sm text-gray-500">{data.symbol}</div>
+    <div className="my-container mt-20">
+      <p className="lg:text-xl font-medium">Trending Assets</p>
+      <h2 className="text-lg lg:text-3xl font-medium text-start mb-10">
+        Assets accelerating among our investor right now.
+      </h2>
+      <div className="flex flex-col lg:flex-row gap-5">
+        <div className="w-full">
+          <ul className="space-y-4">
+            {stocks.map((data) => (
+              <li
+                key={data.symbol}
+                className="flex items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition hover:scale-105 duration-500"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    src={data.logo}
+                    alt={data.name}
+                    className="w-10 h-10 rounded-full object-contain"
+                  />
+                  <div>
+                    <div className="font-semibold">{data.name}</div>
+                    <div className="text-sm text-gray-500">{data.symbol}</div>
+                  </div>
                 </div>
-              </div>
-              <div className="text-lg font-semibold text-green-600">
-                {data.price ? `$${data.price.toFixed(2)}` : "..."}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+                <div className="text-lg font-semibold text-green-600">
+                  {data.price ? `$${data.price.toFixed(2)}` : "..."}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <div className="w-full">
-        <h2 className="text-2xl font-medium mb-6 text-center">
-          Live Crypto Prices
-        </h2>
-        <ul className="space-y-4">
-          {cryptos.map((data) => (
-            <li
-              key={data.symbol}
-              className="flex items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition hover:scale-105 duration-500"
-            >
-              <div className="flex items-center gap-3">
-                <img
-                  src={data.logo}
-                  alt={data.name}
-                  className="w-10 h-10 rounded-full object-contain"
-                />
-                <div>
-                  <div className="font-semibold">{data.name}</div>
-                  <div className="text-sm text-gray-500">{data.symbol}</div>
+        <div className="w-full">
+          <ul className="space-y-4">
+            {cryptos.map((data) => (
+              <li
+                key={data.symbol}
+                className="flex items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-100 transition hover:scale-105 duration-500"
+              >
+                <div className="flex items-center gap-3">
+                  <img
+                    src={data.logo}
+                    alt={data.name}
+                    className="w-10 h-10 rounded-full object-contain"
+                  />
+                  <div>
+                    <div className="font-semibold">{data.name}</div>
+                    <div className="text-sm text-gray-500">{data.symbol}</div>
+                  </div>
                 </div>
-              </div>
-              <div className="text-lg font-semibold text-green-600">
-                {data.price ? `$${data.price.toFixed(2)}` : "..."}
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className="text-lg font-semibold text-green-600">
+                  {data.price ? `$${data.price.toFixed(2)}` : "..."}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

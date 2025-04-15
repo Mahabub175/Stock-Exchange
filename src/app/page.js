@@ -1,6 +1,4 @@
-import LiveCrypto from "@/Components/AllSection/LiveStock/LiveCrypto";
 import LiveMarkets from "@/Components/AllSection/LiveStock/LiveMarkets";
-import LiveStock from "@/Components/AllSection/LiveStock/LiveStock";
 import CopyTraderSlider from "@/Components/AllSection/Overview/CopyTraderSlider";
 import CryptoSlider from "@/Components/AllSection/Overview/CryptoSlider";
 import DailyMovers from "@/Components/AllSection/Overview/DailyMovers";
@@ -13,14 +11,13 @@ const page = () => {
   return (
     <>
       <CryptoSlider />
-      {/* <LiveStock /> */}
       <LiveMarkets />
-      <DailyMovers />
+      {/* <DailyMovers />
       <CopyTraderSlider />
       <TrendingAssets />
       <FeedSlider />
       <InvestSlider />
-      <PortfolioSlider />
+      <PortfolioSlider /> */}
     </>
   );
 };

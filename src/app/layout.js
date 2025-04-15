@@ -30,7 +30,7 @@ const RootLayout = ({ children }) => {
             <Sidebar />
 
             <Layout className="relative">
-              <div className="hidden lg:block sticky top-0 left-0 right-0 z-50 bg-white">
+              <div className="hidden lg:block sticky top-0 left-0 right-0 z-50 bg-white w-full">
                 <TopNavigation />
               </div>
 

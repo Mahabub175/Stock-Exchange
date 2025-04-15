@@ -116,7 +116,7 @@ const TopNavigation = () => {
         />
       </div>
 
-      <div className="w-full !bg-white">
+      <div className="w-full !bg-white rounded-2xl">
         <Tabs
           defaultActiveKey="1"
           items={tabItems}
